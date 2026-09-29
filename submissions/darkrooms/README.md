@@ -4,7 +4,7 @@ DARKROOMS is a 1-bit memory game where your Rare Friend is the only light in pit
 
 **Builder:** [@kairo8080](https://github.com/kairo8080) · **Category:** Character Spotlight (also relevant to Economy Potential) · **SDK:** FriendSDK v0.1.4 (`spokesz/friendsdk@ca3bf18`)
 
-**[Play the preview](https://darkrooms-gamma.vercel.app)** · [Source code](https://github.com/kairo8080/darkrooms/tree/44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4) · [Exact RF terms](https://github.com/kairo8080/darkrooms/blob/44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4/games/darkrooms/game.json) · [Game README](https://github.com/kairo8080/darkrooms/blob/44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4/games/darkrooms/README.md) · [Passing checks](https://github.com/kairo8080/darkrooms/actions/runs/36640499690)
+**[Play the preview](https://darkrooms-gamma.vercel.app)** · [Source code](https://github.com/kairo8080/darkrooms/tree/68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd) · [Exact RF terms](https://github.com/kairo8080/darkrooms/blob/68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd/games/darkrooms/game.json) · [Game README](https://github.com/kairo8080/darkrooms/blob/68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd/games/darkrooms/README.md) · [Passing checks](https://github.com/kairo8080/darkrooms/actions/runs/36641916729)
 
 **Wallet and network:** a browser wallet on **Robinhood mainnet (chain 4663)** holding a hardwired Rare Friends Generations NFT (**generation ≥ 1**). The SDK runtime connects the wallet and verifies ownership before play. No RF, ETH or signature is needed: the economy is simulated.
 
@@ -18,12 +18,12 @@ cd friendsdk
 git checkout ca3bf183b809ecf22d87c63d88ce03969a3f8da2   # FriendSDK v0.1.4
 npm ci
 git clone https://github.com/kairo8080/darkrooms.git ../darkrooms
-git -C ../darkrooms checkout 44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4
+git -C ../darkrooms checkout 68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd
 cp -R ../darkrooms/games/darkrooms games/darkrooms
 npm run dev:game -- games/darkrooms
 ```
 
-Open the printed URL (normally `http://localhost:4173`), connect your wallet, pick your Friend and choose **Enter the dark**. The hosted preview at https://darkrooms-gamma.vercel.app is the same game built with `friendsdk build` on Vercel ([`vercel-build.sh`](https://github.com/kairo8080/darkrooms/blob/44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4/vercel-build.sh)); it keeps the SDK wallet and ownership gate and the sandbox CSP.
+Open the printed URL (normally `http://localhost:4173`), connect your wallet, pick your Friend and choose **Enter the dark**. The hosted preview at https://darkrooms-gamma.vercel.app is the same game built with `friendsdk build` on Vercel ([`vercel-build.sh`](https://github.com/kairo8080/darkrooms/blob/68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd/vercel-build.sh)); it keeps the SDK wallet and ownership gate and the sandbox CSP.
 
 ## How it uses Rare Friends
 
@@ -35,7 +35,9 @@ The Friend is the only light in the game. The world is strict 1-bit black and wh
 2. **Walk in the dark.** Arrow keys or WASD move one tile per press. On touch screens, tap the side of your Friend you want to step toward. Walls and edges bonk harmlessly. A hole ends the run and the next one starts at Room 1.
 3. **Open the vault.** At the door, spend one Key to open that room's vault and reveal a relic. Keep it or sell it back. Then take the next, harder room.
 
-When a room ends, the whole map is revealed with the dotted path you walked, plus steps, near-misses and bonks: the moment to clip. Rooms get more holes (28% → 72%), more walls and a longer, twistier path. Landscape uses the 960 × 640 frame; phones in portrait get a 3 : 4 frame through `host.css`. Sound starts muted; mute and reduced motion are in Settings, and reduced motion removes the glide, shake and fall animations.
+When a room ends, the whole map is revealed with the dotted path you walked, plus steps, near-misses and bonks: the moment to clip. Rooms get more holes (28% → 72%), more walls and a longer, twistier path. Landscape uses the 960 × 640 frame; phones in portrait get a 3 : 4 frame through `host.css`. Mute and reduced motion are in Settings; reduced motion removes the glide, shake and fall animations.
+
+**Sound.** A small chip-style synth written for the game (12.5%, 25% and 50% pulse channels, a triangle bass and a noise channel, with volume and pitch stepped at 60 frames per second): alternating footsteps, a wall thud, a falling sweep, a light-on arpeggio, countdown ticks that rise as the light fades, a lights-out thump, a door fanfare, a coin for Keys, a build-up before each vault and a reveal jingle that grows with the relic's rarity. Sound is on by default and starts on the first tap or key press.
 
 ## How RF is spent, and the economy
 
@@ -81,8 +83,8 @@ Only a vault's contents are random, and only through the SDK's `play`/`settle`. 
 
 ## Checks, credits and limitations
 
-GitHub Actions on FriendSDK v0.1.4 ([latest run](https://github.com/kairo8080/darkrooms/actions/runs/36640499690)): `npm ci`, `npm run build`, `friendsdk check games/darkrooms`, `friendsdk build games/darkrooms`, `tsc` typecheck, and SDK mock-wallet browser checks at 960 px and 360 px (enter the dark, wait for lights out, step, settings, sound toggle, Key shop). **All pass.** A separate scripted playthrough at both sizes (memorize, walk the solved path, buy a Key, open the vault, reveal, next room, fall) reported no browser errors.
+GitHub Actions on FriendSDK v0.1.4 ([latest run](https://github.com/kairo8080/darkrooms/actions/runs/36641916729)): `npm ci`, `npm run build`, `friendsdk check games/darkrooms`, `friendsdk build games/darkrooms`, `tsc` typecheck, and SDK mock-wallet browser checks at 960 px and 360 px (enter the dark, wait for lights out, step, settings, sound toggle, Key shop). **All pass.** A separate scripted playthrough at both sizes (memorize, walk the solved path, buy a Key, open the vault, reveal, next room, fall) reported no browser errors.
 
-Browser checks use the SDK's mocked wallet and RPC. Wallet and funds risk: the preview only connects a wallet and reads ownership on Robinhood mainnet; it requests no approval, signature, transfer or transaction, and all RF shown is simulated. A real-wallet playthrough by the builder on the hosted preview is still to be confirmed. Live mode has never run against a deployed contract.
+Browser checks use the SDK's mocked wallet and RPC. **Real-wallet playthrough:** the builder played the hosted preview on desktop Chrome with an owned Generations Friend (#11511): wallet connection, the SDK ownership gate, Friend selection and runs through Room 5 all worked. Wallet and funds risk: the preview only connects a wallet and reads ownership on Robinhood mainnet; it requests no approval, signature, transfer or transaction, and all RF shown is simulated. Live mode has never run against a deployed contract.
 
-Character sprites come from FriendSDK ([notice](https://github.com/spokesz/friendsdk/blob/main/NOTICE.md)). Rooms, door and relic pixel art are original and drawn in code; sounds are synthesized in code. No third-party assets. No trading, wearable NFTs, creator fees, persistence or live economy is included, and no Token Activity metrics are claimed. Production publication needs separate Rare Friends review.
+Character sprites come from FriendSDK ([notice](https://github.com/spokesz/friendsdk/blob/main/NOTICE.md)). Rooms, door and relic pixel art are original and drawn in code; all sound effects are synthesized in code by the game's own chip synth, with no audio files. No third-party assets. No trading, wearable NFTs, creator fees, persistence or live economy is included, and no Token Activity metrics are claimed. Production publication needs separate Rare Friends review.
