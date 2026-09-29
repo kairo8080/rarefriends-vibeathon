@@ -4,7 +4,7 @@ Every room is pitch black. Your Rare Friend's light shows the holes for a moment
 
 **Builder:** [@kairo8080](https://github.com/kairo8080) · **Category:** Character Spotlight (also relevant to Economy Potential) · **SDK:** FriendSDK v0.1.4 (`spokesz/friendsdk@ca3bf18`)
 
-**Play the preview: PREVIEW_URL** · [Source code](https://github.com/kairo8080/darkrooms/tree/SOURCE_SHA) · [Exact RF terms](https://github.com/kairo8080/darkrooms/blob/SOURCE_SHA/games/darkrooms/game.json) · [Game README](https://github.com/kairo8080/darkrooms/blob/SOURCE_SHA/games/darkrooms/README.md) · [Passing checks](CHECKS_URL)
+**[Play the preview](https://darkrooms-gamma.vercel.app)** · [Source code](https://github.com/kairo8080/darkrooms/tree/44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4) · [Exact RF terms](https://github.com/kairo8080/darkrooms/blob/44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4/games/darkrooms/game.json) · [Game README](https://github.com/kairo8080/darkrooms/blob/44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4/games/darkrooms/README.md) · [Passing checks](https://github.com/kairo8080/darkrooms/actions/runs/36640499690)
 
 **Wallet and network:** a browser wallet on **Robinhood mainnet (chain 4663)** holding a hardwired Rare Friends Generations NFT (**generation ≥ 1**). The SDK runtime connects the wallet and verifies ownership before play. No RF, ETH or signature is needed: the economy is simulated.
 
@@ -18,12 +18,12 @@ cd friendsdk
 git checkout ca3bf183b809ecf22d87c63d88ce03969a3f8da2   # FriendSDK v0.1.4
 npm ci
 git clone https://github.com/kairo8080/darkrooms.git ../darkrooms
-git -C ../darkrooms checkout SOURCE_SHA
+git -C ../darkrooms checkout 44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4
 cp -R ../darkrooms/games/darkrooms games/darkrooms
 npm run dev:game -- games/darkrooms
 ```
 
-Open the printed URL (normally `http://localhost:4173`), connect your wallet, pick your Friend and choose **Enter the dark**. The hosted preview is the same game built with `friendsdk build` (see `vercel-build.sh` in the source).
+Open the printed URL (normally `http://localhost:4173`), connect your wallet, pick your Friend and choose **Enter the dark**. The hosted preview at https://darkrooms-gamma.vercel.app is the same game built with `friendsdk build` on Vercel ([`vercel-build.sh`](https://github.com/kairo8080/darkrooms/blob/44fe9f32dd99d9cd2e5767ed4f8b9b73d3b32ad4/vercel-build.sh)); it keeps the SDK wallet and ownership gate and the sandbox CSP.
 
 ## How it uses Rare Friends
 
@@ -81,8 +81,8 @@ Only a vault's contents are random, and only through the SDK's `play`/`settle`. 
 
 ## Checks, credits and limitations
 
-GitHub Actions on FriendSDK v0.1.4 ([latest run](CHECKS_URL)): `npm ci`, `npm run build`, `friendsdk check games/darkrooms`, `friendsdk build games/darkrooms`, `tsc` typecheck, and SDK mock-wallet browser checks at 960 px and 360 px (enter the dark, wait for lights out, step, settings, sound toggle, Key shop). **All pass.** A separate scripted playthrough at both sizes (memorize, walk the solved path, buy a Key, open the vault, reveal, next room, fall) reported no browser errors.
+GitHub Actions on FriendSDK v0.1.4 ([latest run](https://github.com/kairo8080/darkrooms/actions/runs/36640499690)): `npm ci`, `npm run build`, `friendsdk check games/darkrooms`, `friendsdk build games/darkrooms`, `tsc` typecheck, and SDK mock-wallet browser checks at 960 px and 360 px (enter the dark, wait for lights out, step, settings, sound toggle, Key shop). **All pass.** A separate scripted playthrough at both sizes (memorize, walk the solved path, buy a Key, open the vault, reveal, next room, fall) reported no browser errors.
 
-Browser checks use the SDK's mocked wallet and RPC. REAL_WALLET_STATUS Live mode has never run against a deployed contract.
+Browser checks use the SDK's mocked wallet and RPC. A real-wallet playthrough by the builder on the hosted preview is still to be confirmed. Live mode has never run against a deployed contract.
 
 Character sprites come from FriendSDK ([notice](https://github.com/spokesz/friendsdk/blob/main/NOTICE.md)). Rooms, door and relic pixel art are original and drawn in code; sounds are synthesized in code. No third-party assets. No trading, wearable NFTs, creator fees, persistence or live economy is included, and no Token Activity metrics are claimed. Production publication needs separate Rare Friends review.
