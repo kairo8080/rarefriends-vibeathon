@@ -1,6 +1,6 @@
 # DARKROOMS
 
-Every room is pitch black. Your Rare Friend's light shows the holes for a moment, then goes out, and you walk it to the door from memory. A Key bought with RF opens the vault behind every door you reach.
+DARKROOMS is a 1-bit memory game where your Rare Friend is the only light in pitch-black rooms: see the holes for a moment, walk to the door in the dark, and spend a $RAREFRIENDS Key to open the vault behind it.
 
 **Builder:** [@kairo8080](https://github.com/kairo8080) · **Category:** Character Spotlight (also relevant to Economy Potential) · **SDK:** FriendSDK v0.1.4 (`spokesz/friendsdk@ca3bf18`)
 
@@ -83,6 +83,6 @@ Only a vault's contents are random, and only through the SDK's `play`/`settle`. 
 
 GitHub Actions on FriendSDK v0.1.4 ([latest run](https://github.com/kairo8080/darkrooms/actions/runs/36640499690)): `npm ci`, `npm run build`, `friendsdk check games/darkrooms`, `friendsdk build games/darkrooms`, `tsc` typecheck, and SDK mock-wallet browser checks at 960 px and 360 px (enter the dark, wait for lights out, step, settings, sound toggle, Key shop). **All pass.** A separate scripted playthrough at both sizes (memorize, walk the solved path, buy a Key, open the vault, reveal, next room, fall) reported no browser errors.
 
-Browser checks use the SDK's mocked wallet and RPC. A real-wallet playthrough by the builder on the hosted preview is still to be confirmed. Live mode has never run against a deployed contract.
+Browser checks use the SDK's mocked wallet and RPC. Wallet and funds risk: the preview only connects a wallet and reads ownership on Robinhood mainnet; it requests no approval, signature, transfer or transaction, and all RF shown is simulated. A real-wallet playthrough by the builder on the hosted preview is still to be confirmed. Live mode has never run against a deployed contract.
 
 Character sprites come from FriendSDK ([notice](https://github.com/spokesz/friendsdk/blob/main/NOTICE.md)). Rooms, door and relic pixel art are original and drawn in code; sounds are synthesized in code. No third-party assets. No trading, wearable NFTs, creator fees, persistence or live economy is included, and no Token Activity metrics are claimed. Production publication needs separate Rare Friends review.
