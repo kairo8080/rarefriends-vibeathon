@@ -2,9 +2,9 @@
 
 DARKROOMS is a 1-bit memory game where your Rare Friend is the only light in pitch-black rooms: see the holes for a moment, walk to the door in the dark, and spend a $RAREFRIENDS Key to open the vault behind it.
 
-**Builder:** [@kairo8080](https://github.com/kairo8080) · **Category:** Character Spotlight (also relevant to Economy Potential) · **SDK:** FriendSDK v0.1.4 (`spokesz/friendsdk@ca3bf18`)
+**Builder:** [@kairo8080](https://github.com/kairo8080) on GitHub, [x.com/kairopeng](https://x.com/kairopeng) · **Category:** Character Spotlight (also relevant to Economy Potential) · **SDK:** FriendSDK v0.1.4 (`spokesz/friendsdk@ca3bf18`)
 
-**[Play the preview](https://darkrooms-gamma.vercel.app)** · [Source code](https://github.com/kairo8080/darkrooms/tree/68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd) · [Exact RF terms](https://github.com/kairo8080/darkrooms/blob/68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd/games/darkrooms/game.json) · [Game README](https://github.com/kairo8080/darkrooms/blob/68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd/games/darkrooms/README.md) · [Passing checks](https://github.com/kairo8080/darkrooms/actions/runs/36641916729)
+**[Play the preview](https://darkrooms-rarefriends.vercel.app)** · [Source code](https://github.com/kairo8080/darkrooms/tree/43ea201a98abb1fea043039d98841c6d1e96ca11) · [Exact RF terms](https://github.com/kairo8080/darkrooms/blob/43ea201a98abb1fea043039d98841c6d1e96ca11/games/darkrooms/game.json) · [Game README](https://github.com/kairo8080/darkrooms/blob/43ea201a98abb1fea043039d98841c6d1e96ca11/games/darkrooms/README.md) · [Passing checks](https://github.com/kairo8080/darkrooms/actions/runs/36643013524)
 
 **Wallet and network:** a browser wallet on **Robinhood mainnet (chain 4663)** holding a hardwired Rare Friends Generations NFT (**generation ≥ 1**). The SDK runtime connects the wallet and verifies ownership before play. No RF, ETH or signature is needed: the economy is simulated.
 
@@ -18,12 +18,12 @@ cd friendsdk
 git checkout ca3bf183b809ecf22d87c63d88ce03969a3f8da2   # FriendSDK v0.1.4
 npm ci
 git clone https://github.com/kairo8080/darkrooms.git ../darkrooms
-git -C ../darkrooms checkout 68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd
+git -C ../darkrooms checkout 43ea201a98abb1fea043039d98841c6d1e96ca11
 cp -R ../darkrooms/games/darkrooms games/darkrooms
 npm run dev:game -- games/darkrooms
 ```
 
-Open the printed URL (normally `http://localhost:4173`), connect your wallet, pick your Friend and choose **Enter the dark**. The hosted preview at https://darkrooms-gamma.vercel.app is the same game built with `friendsdk build` on Vercel ([`vercel-build.sh`](https://github.com/kairo8080/darkrooms/blob/68a15cfb8f1ea789c0c8e6f51d7a48112adaf8bd/vercel-build.sh)); it keeps the SDK wallet and ownership gate and the sandbox CSP.
+Open the printed URL (normally `http://localhost:4173`), connect your wallet, pick your Friend and choose **Enter the dark**. The hosted preview at https://darkrooms-rarefriends.vercel.app is the same game built with `friendsdk build` on Vercel ([`vercel-build.sh`](https://github.com/kairo8080/darkrooms/blob/43ea201a98abb1fea043039d98841c6d1e96ca11/vercel-build.sh)); it keeps the SDK wallet and ownership gate and the sandbox CSP.
 
 ## How it uses Rare Friends
 
@@ -83,7 +83,7 @@ Only a vault's contents are random, and only through the SDK's `play`/`settle`. 
 
 ## Checks, credits and limitations
 
-GitHub Actions on FriendSDK v0.1.4 ([latest run](https://github.com/kairo8080/darkrooms/actions/runs/36641916729)): `npm ci`, `npm run build`, `friendsdk check games/darkrooms`, `friendsdk build games/darkrooms`, `tsc` typecheck, and SDK mock-wallet browser checks at 960 px and 360 px (enter the dark, wait for lights out, step, settings, sound toggle, Key shop). **All pass.** A separate scripted playthrough at both sizes (memorize, walk the solved path, buy a Key, open the vault, reveal, next room, fall) reported no browser errors.
+GitHub Actions on FriendSDK v0.1.4 ([latest run](https://github.com/kairo8080/darkrooms/actions/runs/36643013524)): `npm ci`, `npm run build`, `friendsdk check games/darkrooms`, `friendsdk build games/darkrooms`, `tsc` typecheck, and SDK mock-wallet browser checks at 960 px and 360 px (enter the dark, wait for lights out, step, settings, sound toggle, Key shop). **All pass.** A separate scripted playthrough at both sizes (memorize, walk the solved path, buy a Key, open the vault, reveal, next room, fall) reported no browser errors.
 
 Browser checks use the SDK's mocked wallet and RPC. **Real-wallet playthrough:** the builder played the hosted preview on desktop Chrome with an owned Generations Friend (#11511): wallet connection, the SDK ownership gate, Friend selection and runs through Room 5 all worked. Wallet and funds risk: the preview only connects a wallet and reads ownership on Robinhood mainnet; it requests no approval, signature, transfer or transaction, and all RF shown is simulated. Live mode has never run against a deployed contract.
 
